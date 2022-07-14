@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio_interceptor_crud/intro/intro_view.dart';
 import 'package:dio_interceptor_crud/colors.dart';
-import 'package:dio_interceptor_crud/login/login_view.dart';
 
 
 void main() {
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: CustomColor.scaffoldLoginRegisterButton,
         fontFamily: 'IranSans'
       ),
-      home: const LoginPage(),
+      home: const Intro(),
     );
   }
 }

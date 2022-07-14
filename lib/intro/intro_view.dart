@@ -1,4 +1,5 @@
 import 'package:dio_interceptor_crud/colors.dart';
+import 'package:dio_interceptor_crud/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dio_interceptor_crud/componants/login_register_button.dart';
@@ -31,8 +32,8 @@ class Intro extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: const [
-                    Align(
+                  children: [
+                    const Align(
                       alignment: Alignment.bottomRight,
                       child: Text(
                         'Interceptor',
@@ -41,29 +42,38 @@ class Intro extends StatelessWidget {
                             TextStyle(color: Color(0xFFc7deff), fontSize: 25.0),
                       ),
                     ),
-                    Text(
+                    const Text(
                       'Dio قابلیت صحت سنجی قبل از ارسال اطلاعات به سرور را دارد. این قابلیت در Interceptors گنجانده شده است.',
                       textDirection: TextDirection.rtl,
                       style:
                           TextStyle(color: Color(0xFFc7deff), fontSize: 14.0),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15.0,
                     ),
                     LoginRegisterButton(
                       buttonColor: CustomColor.white,
                       textButton: 'ورود',
                       textColorButton: CustomColor.scaffoldLoginRegisterButton,
+                      function: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                            context: context,
+                            builder: (BuildContext context) =>
+                                loginModal(context),
+                            backgroundColor: Colors.transparent);
+                      },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15.0,
                     ),
                     LoginRegisterButton(
                       buttonColor: Colors.transparent,
                       textButton: 'ثبت نام',
                       textColorButton: CustomColor.white,
+                      function: () {},
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 35.0,
                     ),
                   ],

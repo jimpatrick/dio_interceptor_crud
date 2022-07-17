@@ -2,15 +2,46 @@ import 'package:dio_interceptor_crud/colors.dart';
 import 'package:dio_interceptor_crud/login/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:dio_interceptor_crud/componants/login_register_button.dart';
+import 'package:dio_interceptor_crud/components/login_register_button.dart';
+import 'package:dio_interceptor_crud/register/register_view.dart';
 
-class Intro extends StatelessWidget {
+class Intro extends StatefulWidget {
   const Intro({Key? key}) : super(key: key);
 
   @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> {
+
+  void _loginShowModalFunction() {
+    setState(() {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) => const LoginModal(),
+      );
+    });
+  }
+
+  void _registerShowModalFunction() {
+    setState(() {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) => const RegisterModal(),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     double appBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           SvgPicture.asset('assets/images/background.svg', fit: BoxFit.cover),
@@ -55,14 +86,7 @@ class Intro extends StatelessWidget {
                       buttonColor: CustomColor.white,
                       textButton: 'ورود',
                       textColorButton: CustomColor.scaffoldLoginRegisterButton,
-                      function: () {
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                            context: context,
-                            builder: (BuildContext context) =>
-                                loginModal(context),
-                            backgroundColor: Colors.transparent);
-                      },
+                      function: _loginShowModalFunction,
                     ),
                     const SizedBox(
                       height: 15.0,
@@ -71,13 +95,13 @@ class Intro extends StatelessWidget {
                       buttonColor: Colors.transparent,
                       textButton: 'ثبت نام',
                       textColorButton: CustomColor.white,
-                      function: () {},
+                      function: _registerShowModalFunction,
                     ),
                     const SizedBox(
                       height: 35.0,
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

@@ -13,4 +13,9 @@ abstract class ApiClient {
 
   @GET(EndPoints.users)
   Future<List<UsersModel>> getUsers();
+
+  @POST(EndPoints.login)
+  @FormUrlEncoded()
+  Future<String> loginUser(@Field("email") userEmail,
+      @Field("password") userPassword);
 }

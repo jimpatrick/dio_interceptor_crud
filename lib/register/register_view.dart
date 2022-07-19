@@ -8,17 +8,16 @@ class RegisterModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      reverse: true,
-      child: ClipPath(
-        clipper: CustomBackgroundClipper(),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
+    return ClipPath(
+      clipper: CustomBackgroundClipper(),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -166,8 +165,7 @@ class RegisterModal extends StatelessWidget {
                   height: 15.0,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                   child: LoginRegisterButton(
                     buttonColor: Colors.transparent,
                     textButton: 'ورود',

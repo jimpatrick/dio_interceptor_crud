@@ -4,22 +4,26 @@ import 'package:dio_interceptor_crud/components/login_register_button.dart';
 import 'package:dio_interceptor_crud/components/custom_clipper.dart';
 import 'package:dio_interceptor_crud/register/register_view.dart';
 
+
 class LoginModal extends StatelessWidget {
   const LoginModal({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      reverse: true,
-      child: ClipPath(
-        clipper: CustomBackgroundClipper(),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
+
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
+
+    return ClipPath(
+      clipper: CustomBackgroundClipper(),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -46,6 +50,8 @@ class LoginModal extends StatelessWidget {
                     suffixIcon: Icon(Icons.check, color: Colors.grey),
                   ),
                   onChanged: (newText) {},
+                    controller: emailController,
+                  textInputAction: TextInputAction.next,
                 ), //ایمیل
                 const SizedBox(
                   height: 20.0,
@@ -69,6 +75,8 @@ class LoginModal extends StatelessWidget {
                     suffixIcon: Icon(Icons.visibility_off, color: Colors.grey),
                   ),
                   onChanged: (newText) {},
+                  controller: passwordController,
+                  textInputAction: TextInputAction.done,
                 ), //رمز عبور
                 const SizedBox(
                   height: 10.0,
